@@ -17,7 +17,7 @@ import { AuthenticationEffects } from './effects/authentication';
 import { RuleEffects } from './effects/rule';
 import { UserEffects } from './effects/user';
 import { BadgeEffects } from './effects/badge';
-// import { ScaleEffects } from './effects/scale';
+import { ScaleEffects } from './effects/scale';
 
 // Components & Containers
 import { AppComponent } from './containers/app';
@@ -27,6 +27,7 @@ import { LoginPageComponent } from './containers/login-page';
 import { RulePageComponent } from './containers/rule-page';
 import { UserPageComponent } from './containers/user-page';
 import { BadgePageComponent } from './containers/badge-page';
+import { ScalePageComponent } from './containers/scale-page';
 
 import { AddBadgeDialogComponent } from './components/add-badge-dialog';
 
@@ -35,6 +36,7 @@ import { AuthenticationService } from './services/authentication';
 import { RuleService } from './services/rule';
 import { UserService } from './services/user';
 import { BadgeService } from './services/badge';
+import { ScaleService } from './services/scale';
 import { HttpClient } from './services/http-client';
 
 import { routes } from './routes';
@@ -86,7 +88,7 @@ import { reducer } from './reducers';
     EffectsModule.run(RuleEffects),
     EffectsModule.run(UserEffects),
     EffectsModule.run(BadgeEffects),
-    // EffectsModule.run(ScaleEffects),
+    EffectsModule.run(ScaleEffects),
   ],
   declarations: [
     AppComponent,
@@ -95,6 +97,7 @@ import { reducer } from './reducers';
     RulePageComponent,
     UserPageComponent,
     BadgePageComponent,
+    ScalePageComponent,
     NotFoundPageComponent,
     AddBadgeDialogComponent
   ],
@@ -106,6 +109,7 @@ import { reducer } from './reducers';
     RuleService,
     UserService,
     BadgeService,
+    ScaleService,
     HttpClient
   ],
   bootstrap: [

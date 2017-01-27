@@ -15,7 +15,7 @@ import { AddBadgeDialogComponent } from '../components/add-badge-dialog';
       <md-card-title>Badges</md-card-title>
       <md-card-content>
         <md-list>
-          <h3 md-subheader>Badges</h3>
+          <h3 md-subheader>All badges</h3>
           <md-list-item *ngFor="let badge of badges$ | async; let i = index">
             <h4 md-line>{{badge.name}}</h4>
             <p md-line class="muted">{{badge.description}}</p>

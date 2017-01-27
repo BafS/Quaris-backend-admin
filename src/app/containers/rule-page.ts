@@ -13,7 +13,7 @@ import { Rule } from '../models/rule';
       <md-card-title>Rules</md-card-title>
       <md-card-content>
         <md-list>
-          <h3 md-subheader>Rules</h3>
+          <h3 md-subheader>All rules</h3>
           <md-list-item
             class="item-rule"
             *ngFor="let rule of rules$ | async; let i = index"
@@ -115,8 +115,6 @@ export class RulePageComponent  {
   }
 
   selectRule(rule: Rule) {
-    console.log('3456789', rule);
-
     this.selectedRule = rule;
 
     this.store.dispatch({
@@ -146,8 +144,6 @@ export class RulePageComponent  {
   }
 
   doUpdate() {
-    console.log(this.currentEnabled);
-
     this.store.dispatch({
       type: fromRule.ActionTypes.RULE_UPDATE_REQUEST,
       payload: <Rule> {

@@ -42,7 +42,7 @@ import * as fromAuthentication from './authentication';
 import * as fromRule from './rule';
 import * as fromUser from './user';
 import * as fromBadge from './badge';
-// import * as fromScale from './scale';
+import * as fromScale from './scale';
 
 
 /**
@@ -54,7 +54,7 @@ export interface State {
   rule: fromRule.State;
   user: fromUser.State;
   badge: fromBadge.State;
-  // scale: fromScale.State;
+  scale: fromScale.State;
   layout: fromLayout.State;
   router: fromRouter.RouterState;
 }
@@ -72,7 +72,7 @@ const reducers = {
   rule: fromRule.reducer,
   user: fromUser.reducer,
   badge: fromBadge.reducer,
-  // scale: fromScale.reducer,
+  scale: fromScale.reducer,
   layout: fromLayout.reducer,
   router: fromRouter.routerReducer,
 };
