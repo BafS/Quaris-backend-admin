@@ -30,6 +30,7 @@ import { BadgePageComponent } from './containers/badge-page';
 import { ScalePageComponent } from './containers/scale-page';
 
 import { AddBadgeDialogComponent } from './components/add-badge-dialog';
+import { UserDialogComponent } from './components/user-dialog';
 
 // Services
 import { AuthenticationService } from './services/authentication';
@@ -99,10 +100,12 @@ import { reducer } from './reducers';
     BadgePageComponent,
     ScalePageComponent,
     NotFoundPageComponent,
-    AddBadgeDialogComponent
+    AddBadgeDialogComponent,
+    UserDialogComponent
   ],
   entryComponents: [
-    AddBadgeDialogComponent
+    AddBadgeDialogComponent,
+    UserDialogComponent
   ],
   providers: [
     AuthenticationService,

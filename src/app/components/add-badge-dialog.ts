@@ -17,10 +17,10 @@ import * as fromBadge from '../reducers/badge';
           <textarea md-input placeholder="Description" [(ngModel)]="description"></textarea>
         </md-input-container>
 
-        <button md-button (click)="save()">
+        <button md-button color="primary" (click)="save()">
           <md-icon class="md-24">add</md-icon>
         </button>
-        <button md-button (click)="dialogRef.close()">
+        <button md-button color="secondary" (click)="dialogRef.close()">
           <md-icon class="md-24">clear</md-icon>
         </button>
       </md-dialog-content>
@@ -30,6 +30,9 @@ import * as fromBadge from '../reducers/badge';
     :host  .badge-dialog {
       max-width: 350px;
       margin: 20px 0;
+    }
+    :host h1 {
+      font-family: sans-serif;
     }
   `]
 })

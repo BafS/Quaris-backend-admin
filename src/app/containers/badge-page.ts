@@ -51,7 +51,6 @@ export class BadgePageComponent {
     let dialogRef = this.dialog.open(AddBadgeDialogComponent);
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
-      // this.selectedOption = result;
     });
   }
 }
