@@ -14,6 +14,7 @@ import { Observable } from 'rxjs/Observable';
 
 import * as fromRule from '../reducers/rule';
 
+import { Rule } from '../models/rule';
 import { RuleService } from '../services/rule';
 
 @Injectable()
@@ -24,7 +25,7 @@ export class RuleEffects {
   ) { }
 
   @Effect()
-  auth$: Observable<Action> = this.actions$
+  getAll$: Observable<Action> = this.actions$
     .ofType(fromRule.ActionTypes.RULES_REQUESTS)
     // .debounceTime(300)
     .map(action => action.payload)
@@ -48,9 +49,26 @@ export class RuleEffects {
       });
     });
 
-    //   return this.googleBooks.searchBooks(query)
-    //     .takeUntil(nextSearch$)
-    //     .map(books => new book.SearchCompleteAction(books))
-    //     .catch(() => of(new book.SearchCompleteAction([])));
-    // });
+  @Effect()
+  update$: Observable<Action> = this.actions$
+    .ofType(fromRule.ActionTypes.RULE_UPDATE_REQUEST)
+    .map(action => action.payload)
+    .switchMap((rule: Rule) => {
+      return this.api.update(rule.id, rule)
+        .map((res: Response) => {
+          if (res.ok) {
+            return rule;
+          } else {
+            return <Action>{
+              type: fromRule.ActionTypes.RULE_UPDATE_FAIL
+            };
+          }
+        })
+        .map(rule => {
+          return <Action>{
+            type: fromRule.ActionTypes.RULE_UPDATE_SUCCESS,
+            payload: rule
+          };
+      });
+    });
 }

@@ -2,6 +2,7 @@ import 'rxjs/add/operator/map';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient  } from './http-client';
+import { Rule } from '../models/rule';
 
 @Injectable()
 export class RuleService {
@@ -9,5 +10,9 @@ export class RuleService {
 
   getAll(): Observable<any> {
     return this.http.get('/rules');
+  }
+
+  update(ruleId, rule: Rule): Observable<any> {
+    return this.http.put('/rules/' + ruleId, rule);
   }
 }

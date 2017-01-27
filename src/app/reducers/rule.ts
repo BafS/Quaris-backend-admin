@@ -5,6 +5,10 @@ export const ActionTypes = {
   RULES_SUCCESS: 'RULES_SUCCESS',
   RULES_FAIL: 'RULES_FAIL',
   RULE_SELECTED: 'RULE_SELECTED',
+
+  RULE_UPDATE_REQUEST: 'RULE_UPDATE_REQUEST',
+  RULE_UPDATE_SUCCESS: 'RULE_UPDATE_SUCCESS',
+  RULE_UPDATE_FAIL: 'RULE_UPDATE_FAIL',
 };
 
 export interface State {
@@ -26,11 +30,23 @@ export function reducer(state = initialState, action): State {
       });
     }
 
-    // case ActionTypes.RULES_ADD: {
-    //   return Object.assign({}, state, {
-    //     entities: action.payload
-    //   });
-    // }
+    case ActionTypes.RULE_UPDATE_SUCCESS: {
+      const rule: Rule = action.payload;
+      // let entitiesCopy: Rule[] = Object.assign({}, state.entities);
+      let entitiesCopy = state.entities.map(r => {
+        if (r.id === rule.id) {
+          return rule;
+        }
+        return r;
+      });
+
+      // console.log(entitiesCopy);
+
+      return Object.assign({}, state, {
+        entities: entitiesCopy,
+        selected: state.selected,
+      });
+    }
 
     default: {
       return state;

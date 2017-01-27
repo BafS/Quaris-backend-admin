@@ -35,7 +35,7 @@ export class HttpClient {
     return false;
   }
 
-  get(url: string) {
+  private getOptions() {
     let headers = new Headers({
       'Content-Type': 'application/json',
     });
@@ -49,24 +49,18 @@ export class HttpClient {
     console.info(headers);
 
 
-    const options = new RequestOptions({ headers });
+    return new RequestOptions({ headers });
+  }
 
-    return this.http.get(this.API_PATH + url, options);
+  get(url: string) {
+    return this.http.get(this.API_PATH + url, this.getOptions());
   }
 
   post(url: string, data?: Object) {
-    let headers = new Headers({
-      'Content-Type': 'application/json',
-    });
+    return this.http.post(this.API_PATH + url, data, this.getOptions());
+  }
 
-    this.checkToken();
-
-    if (this.token) {
-      headers.append('Authorization', this.token);
-    }
-
-    const options = new RequestOptions({ headers });
-
-    return this.http.post(this.API_PATH + url, data, options);
+  put(url: string, data?: Object) {
+    return this.http.put(this.API_PATH + url, data, this.getOptions());
   }
 }
