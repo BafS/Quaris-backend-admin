@@ -15,4 +15,8 @@ export class RuleService {
   update(ruleId, rule: Rule): Observable<any> {
     return this.http.put('/rules/' + ruleId, rule);
   }
+
+  delete(ruleId): Observable<any> {
+    return this.http.delete('/rules/' + ruleId);
+  }
 }

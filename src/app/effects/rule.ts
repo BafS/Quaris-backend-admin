@@ -71,4 +71,27 @@ export class RuleEffects {
           };
       });
     });
+
+  @Effect()
+  delete$: Observable<Action> = this.actions$
+    .ofType(fromRule.ActionTypes.RULE_DELETE_REQUEST)
+    .map(action => action.payload)
+    .switchMap(id => {
+      return this.api.delete(id)
+        .map((res: Response) => {
+          if (res.ok) {
+            return id;
+          } else {
+            return <Action>{
+              type: fromRule.ActionTypes.RULE_DELETE_FAIL
+            };
+          }
+        })
+        .map(id => {
+          return <Action>{
+            type: fromRule.ActionTypes.RULE_DELETE_SUCCESS,
+            payload: id
+          };
+      });
+    });
 }

@@ -23,7 +23,7 @@ import { AddBadgeDialogComponent } from '../components/add-badge-dialog';
         </md-list>
       </md-card-content>
       <md-card-actions>
-        <a md-raised-button color="primary" (click)="openDialog()">Add new badge</a>
+        <button md-raised-button color="primary" (click)="openDialog()">Add new badge</button>
       </md-card-actions>
     </md-card>
   `,

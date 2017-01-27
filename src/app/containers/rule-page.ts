@@ -39,6 +39,7 @@ import { Rule } from '../models/rule';
             >
               Enable rule ?
             </md-slide-toggle>
+
           </md-card-header>
           <md-card-content>
             <md-input-container class="editor">
@@ -52,6 +53,9 @@ import { Rule } from '../models/rule';
           <md-card-actions>
             <button md-raised-button color="primary" (click)="doUpdate()">
               Update this rule
+            </button>
+            <button md-raised-button (click)="onRemove()">
+              Delete this rule
             </button>
             <button md-raised-button (click)="doReset()">
               Reset editors
@@ -132,6 +136,13 @@ export class RulePageComponent  {
     this.currentAction = this.selectedRule.action;
     this.currentCriteria = this.selectedRule.criteria;
     this.currentEnabled = this.selectedRule.enabled;
+  }
+
+  onRemove() {
+    this.store.dispatch({
+      type: fromRule.ActionTypes.RULE_DELETE_REQUEST,
+      payload: this.selectedRule.id
+    });
   }
 
   doUpdate() {

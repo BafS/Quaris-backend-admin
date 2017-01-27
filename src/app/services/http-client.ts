@@ -63,4 +63,8 @@ export class HttpClient {
   put(url: string, data?: Object) {
     return this.http.put(this.API_PATH + url, data, this.getOptions());
   }
+
+  delete(url: string) {
+    return this.http.delete(this.API_PATH + url, this.getOptions());
+  }
 }
