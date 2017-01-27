@@ -22,12 +22,20 @@ const initialState: State = {
 export function reducer(state = initialState, action): State {
   switch (action.type) {
     case ActionTypes.AUTHENTICATION_SUCCESS: {
-      // const payload = action.payload;
+      const payload = action.payload;
 
       return {
-        userId: 'test',
-        token: '123123',
+        userId: '', // TODO
+        token: payload,
         isLogged: true
+      };
+    }
+
+    case ActionTypes.AUTHENTICATION_FAIL: {
+      return {
+        userId: null,
+        token: null,
+        isLogged: false
       };
     }
 

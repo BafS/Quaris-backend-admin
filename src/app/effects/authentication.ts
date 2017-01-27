@@ -56,6 +56,8 @@ export class AuthenticationEffects {
             payload: token
           };
         } else {
+          window.localStorage.removeItem('token');
+
           return <Action>{
             type: fromAuthentication.ActionTypes.AUTHENTICATION_FAIL
           };

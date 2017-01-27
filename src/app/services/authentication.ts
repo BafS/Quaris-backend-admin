@@ -11,9 +11,11 @@ export class AuthenticationService {
   authenticate(applicationName: string, password: string): Observable<any> {
     const obs = this.http.post('/auth', { applicationName, password });
     obs.subscribe(res => {
-      console.info('Set token', res.headers.get('Authorization'));
+      if (res.headers.get('Authorization')) {
+        console.info('Set token', res.headers.get('Authorization'));
 
-      this.http.setToken(res.headers.get('Authorization').replace(/Bearer */i, ''));
+        this.http.setToken(res.headers.get('Authorization').replace(/Bearer */i, ''));
+      }
     });
 
     return obs;

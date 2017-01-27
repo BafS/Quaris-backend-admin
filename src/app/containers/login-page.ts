@@ -14,15 +14,15 @@ import * as fromAuthentication from '../reducers/authentication';
       <md-card-title>Login</md-card-title>
       <md-card-content>
         <md-input-container>
-          <input md-input placeholder="Username">
+          <input md-input [(ngModel)]="username" placeholder="Username">
         </md-input-container>
 
         <md-input-container>
-          <input md-input placeholder="Password">
+          <input md-input [(ngModel)]="password" placeholder="Password">
         </md-input-container>
       </md-card-content>
       <md-card-actions>
-        <button md-raised-button color="primary" (click)="doLogin('supernews', 'toto')">Login</button>
+        <button md-raised-button color="primary" (click)="doLogin(username, password)">Login</button>
         <button md-raised-button color="secondary" routerLink="/register">Register</button>
       </md-card-actions>
     </md-card>
@@ -35,6 +35,8 @@ import * as fromAuthentication from '../reducers/authentication';
 })
 export class LoginPageComponent {
   authentication$: Observable<any>;
+  username: string;
+  password: string;
 
   constructor(
     private store: Store<fromRoot.State>,
@@ -46,10 +48,15 @@ export class LoginPageComponent {
 
     this.authentication$.subscribe((action: fromAuthentication.State) => {
       if (action.isLogged) {
-        this.snackbar.open('Already logged in', 'Ok', {
+        this.snackbar.open('You are logged in', 'Ok', {
           duration: 2000
         });
         this.router.navigate(['dashboard']);
+      } else {
+        this.snackbar.open('You are not logged in', 'Ok', {
+          duration: 2500
+        });
+        window.localStorage.removeItem('token');
       }
     });
 
