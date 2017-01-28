@@ -1,4 +1,10 @@
-# Quaris backend
+# Quaris administration
+
+![](http://i.imgur.com/5DqX4so.png)
+
+> Screenshot of the rules management
+
+Main project [BafS/Quaris](https://github.com/BafS/Quaris).
 
 Based on [ngrx/example-app](https://github.com/ngrx/example-app).
 
